@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+
+        function getComputerChoice(){
+          var decision = Math.floor(Math.random()*3);
+        if (decision == 0){
+            var decision = "rock";
+          }
+          else if (decision == 1) {
+            var decision = "paper";
+          }
+          else if (decision == 2){
+            var decision = "scissors";
+          }
+            return decision;
+        }
+
+        function playRound(playerSelection,decision){
+            if (playerSelection == decision) {
+                return("Tied! You chose the same!")
+            }
+            else if (playerSelection == "rock" && decision == "paper"){
+               return("Paper beats rock... you lose!")
+            }
+            else if (playerSelection == "scissors" && decision == "rock"){
+                return("Rock beats scissors... you lose!")
+            }
+            else if (playerSelection == "paper" && decision == "scissors"){
+                return("Scissors beats paper... you lose!")
+            }
+            else if (playerSelection == "rock" && decision == "scisors"){
+                return("Rock beats scissors... you win!")
+            }
+            else if (playerSelection == "paper" && decision == "rock"){
+                return("Paper beats rocks... you win!")
+            }
+            else if (playerSelection == "scissors" && decision == "paper"){
+                return("Scissors beats paper... you win!")
+            }
+       }
+      function game(){
+        for (let i = 0; i<=5; i++) {
+            let playerSelection = prompt("Choose rock, paper, or scissors.","Rock");
+            // playerSelection = playerSelection.toLowerCase;
+            decision= getComputerChoice();
+            final = playRound(playerSelection,decision); 
+            console.log(final);
+        }
+      }
+      game();
+
+    </script>
+</body>
+</html>
