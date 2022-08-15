@@ -23,39 +23,55 @@
             return decision;
         }
 
-        function playRound(playerSelection,decision){
+        function playRound(playerSelection,decision,playerScore,computerScore){
             if (playerSelection == decision) {
-                return("Tied! You chose the same!")
+                return("Tied! You chose the same!") 
             }
             else if (playerSelection == "rock" && decision == "paper"){
-               return("Paper beats rock... you lose!")
+               return("Paper beats rock... you lose this round!");
+               playerScore=playerScore + 1;
             }
             else if (playerSelection == "scissors" && decision == "rock"){
-                return("Rock beats scissors... you lose!")
+                return("Rock beats scissors... you lose this round!")
             }
             else if (playerSelection == "paper" && decision == "scissors"){
-                return("Scissors beats paper... you lose!")
+                return("Scissors beats paper... you lose this round!")
             }
-            else if (playerSelection == "rock" && decision == "scisors"){
-                return("Rock beats scissors... you win!")
+            else if (playerSelection == "rock" && decision == "scissors"){
+                return("Rock beats scissors... you win this round!")
             }
             else if (playerSelection == "paper" && decision == "rock"){
-                return("Paper beats rocks... you win!")
+                return("Paper beats rocks... you win this round!")
             }
             else if (playerSelection == "scissors" && decision == "paper"){
-                return("Scissors beats paper... you win!")
+                return("Scissors beats paper... you win this round!")
             }
        }
-      function game(){
-        for (let i = 0; i<=5; i++) {
+      function game()
+      {
+        for (let i = 0; i<5; i++) {
             let playerSelection = prompt("Choose rock, paper, or scissors.","Rock");
-            // playerSelection = playerSelection.toLowerCase;
+            playerSelection = playerSelection.toLowerCase();
             decision= getComputerChoice();
-            final = playRound(playerSelection,decision); 
+            final = playRound(playerSelection,decision,playerScore,computerScore); 
             console.log(final);
+            if(final.includes("win")){
+              playerScore++;
+            }
+            else {
+              computerScore++;
+            }
         }
+        console.log("Player score:"+playerScore)
+        console.log("Computer score:"+computerScore)
       }
+      playerScore = 0;
+      computerScore = 0;
       game();
+      if(playerScore>computerScore){
+        console.log("YOU WIN!")
+      }
+      else {console.log("You lost!")}
 
     </script>
 </body>
